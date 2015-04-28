@@ -23,26 +23,13 @@
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk</artifactId>
+            <artifactId>aws-java-sdk-swf-libraries</artifactId>
             <version>${aws.sdk.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-codec</groupId>
-                    <artifactId>commons-codec</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-flow-build-tools</artifactId>
             <version>${aws.sdk.version}</version>
-            <scope>system</scope>
-            <systemPath>${aws.sdk.home}/lib/aws-java-sdk-flow-build-tools-${aws.sdk.version}.jar</systemPath>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -61,18 +48,25 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.cyclopsgroup</groupId>
             <artifactId>kaufman-beans</artifactId>
             <version>0.0.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>cyclopsgroup-extra</id>
+            <name>CyclopsGroup extra library repository</name>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>http://${dist.server.name}/maven/extra-repository</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -93,7 +87,7 @@
                     <aspectLibraries>
                         <aspectLibrary>
                             <groupId>com.amazonaws</groupId>
-                            <artifactId>aws-java-sdk</artifactId>
+                            <artifactId>aws-java-sdk-swf-libraries</artifactId>
                         </aspectLibrary>
                     </aspectLibraries>
                 </configuration>
